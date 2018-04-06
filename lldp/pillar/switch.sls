@@ -1,0 +1,2 @@
+config:
+  lldp: lldpd.conf

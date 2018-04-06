@@ -1,0 +1,2 @@
+config:
+  bgp: bgpd.conf
