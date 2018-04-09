@@ -15,54 +15,54 @@ The sample static route configuration file uses "ip route" Linux CLI commands. T
 
 **Sample conf file - /srv/salt/templates/route.conf**
 
-	ip route add 172.13.1.0/255.255.255.0 via 0.0.0.0 dev eth0
-	ip route del 10.10.1.0/255.255.255.0 via 0.0.0.0 dev e101-030-0
+    ip route add 172.13.1.0/255.255.255.0 via 0.0.0.0 dev eth0
+    ip route del 10.10.1.0/255.255.255.0 via 0.0.0.0 dev e101-030-0
 
 **Sample pillar top file - /srv/pillar/top.sls**
 
-	base:
-	  'OPX':
-	    - switch
+    base:
+      'OPX':
+        - switch
 
 > **NOTE**: ``OPX`` is the Salt minion name.
 
 **Sample pillar conf file - /srv/pillar/switch.sls**
 
-	config:
-	  route: route.conf
+    config:
+      route: route.conf
 
 **Sample state file - /srv/salt/route.sls**
 
-	salt://{{ pillar.get('config')['route'] }}:
-	  cmd.script
+    salt://{{ pillar.get('config')['route'] }}:
+      cmd.script
 
 **Run**
 
 Run in a specific Salt minion.
 
-	salt <minion name> state.sls route
+    salt <minion name> state.sls route
 
-	#if your minion name is OPX
+    #if your minion name is OPX
 
-	salt OPX state.sls route
+    salt OPX state.sls route
 
 Run in all Salt minions.
 
-	salt '*' state.sls route
+    salt '*' state.sls route
 
 **View routes**
 
 View all routes in the device
 
-          salt <minion name> network.routes   
+    salt <minion name> network.routes   
 
 View all IPv4 routes in the device
 
-           salt <minion name> network.routes inet    
+    salt <minion name> network.routes inet    
 
 View all IPv6 routes in the device
 
-           salt <minion name> network.routes inet6
+    salt <minion name> network.routes inet6
 
 ## References
 
@@ -72,5 +72,4 @@ View all IPv6 routes in the device
 
 - https://manpages.debian.org/stretch/iproute2/ip-route.8.en.html
 
-
-(c) 2018 Dell Inc. or its subsidiaries. All Rights Reserved.
+Copyright (c) 2018, Dell EMC. All rights reserved.

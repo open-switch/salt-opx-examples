@@ -3,36 +3,35 @@
 This example describes how to use Salt to build a CLOS fabric with Dell EMC Networking OS10 switches (OpenSwitch OPX). The sample topology is a two-tier CLOS fabric with two spines and two leafs connected as mesh. EBGP is running between the two tiers.
 All switches in spine have the same AS number, and each leaf switch has a unique AS number. All AS numbers used are private. Below is the example for configuring BGP and interace using Quagga and LLDP.
 
-Create a simple Salt module
------------------------------
+## Create a simple Salt module
 
 **Step 1**
 
 Establish the connection between the Salt master and the Salt minion (OpenSwitch OPX), for leaf1 the Salt minion name is “leaf1”, for spine1 the Salt minion name is “spine1” and so on (name accordingly).  
 
-	``salt-key leaf1 -A``  - Accept the key from leaf1 
-	``salt-key  -L``  - List the minion 
+    ``salt-key leaf1 -A``  - Accept the key from leaf1 
+    ``salt-key  -L``  - List the minion 
 
 **Step 2**
 
 Create a BGP configuration file called ``/srv/salt/templates/leaf1-bgp.conf``, then define parameter values for leaf1 (this configuration file is the same as the quagga ``bgpd.conf`` file) and create the BGP configuration file for all leafs and spines.
 
-	  interface e101-049-0
-	   ip address 10.1.1.1/24
-	   no shutdown
-	  interface e101-051-0
-	   ip address 20.1.1.1/24
-	   no shutdown
-	  interface e101-001-0
-	   ip address 11.1.1.1/24
-	   no shutdown
-	  router bgp 64501
-	   neighbor 10.1.1.2 remote-as 64555
-	   neighbor 20.1.1.2 remote-as 64555
-	   network 10.1.1.0/24
-	   network 20.1.1.0/24
-	   network 11.1.1.0/24
-	  maximum-paths 16   
+    interface e101-020-0
+      ip address 10.1.1.1/24
+      no shutdown
+    interface e101-021-0
+      ip address 20.1.1.1/24
+      no shutdown
+    interface e101-001-0
+      ip address 11.1.1.1/24
+      no shutdown
+    router bgp 64501
+      neighbor 10.1.1.2 remote-as 64555
+      neighbor 20.1.1.2 remote-as 64555
+      network 10.1.1.0/24
+      network 20.1.1.0/24
+      network 11.1.1.0/24
+      maximum-paths 16
 
 Create an LLDP configuration file called ``/srv/salt/templates/leaf1-lldp.conf``, then define parameter values for leaf1 (this configuration file is the same as the ``lldpd.conf`` file in Linux) and create the LLDP configuration file for all leafs and spines.
 
@@ -95,6 +94,6 @@ Create an ``opx-config.sls`` file called ``/srv/salt/opx-config.sls`` which will
 
 Run the module.
 
-	salt ‘*’ state.sls opx-config
+    salt ‘*’ state.sls opx-config
 
-(c) 2018 Dell Inc. or its subsidiaries. All Rights Reserved.
+Copyright (c) 2018, Dell EMC. All rights reserved.
