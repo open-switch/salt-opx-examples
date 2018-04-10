@@ -1,0 +1,5 @@
+[gerrit]
+host=review.openswitch.net
+port=29418
+project=opx/salt-opx-examples
+defaultbranch=master
