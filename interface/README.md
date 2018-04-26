@@ -56,7 +56,7 @@ Run in all Salt minions.
 
 **View specific interface details in an OPX device**
 
-    salt <minion name> network.interfaces eth0
+    salt <minion name> network.interface eth0
 
 ## References
 
