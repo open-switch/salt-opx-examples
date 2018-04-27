@@ -41,22 +41,13 @@ This module contains the configuration file ``/srv/salt/templates/bgpd.conf``, p
 
 **Sample conf file - /srv/salt/templates/bgpd.conf**
 
-    interface e101-020-0
-      ip address 10.1.1.1/24
-      no shutdown
-    interface e101-021-0
-      ip address 20.1.1.1/24
-      no shutdown
-    interface e101-001-0
-      ip address 11.1.1.1/24
-      no shutdown
-    router bgp 64501
-      neighbor 10.1.1.2 remote-as 64555
-      neighbor 20.1.1.2 remote-as 64555
-      network 10.1.1.0/24
-      network 20.1.1.0/24
-      network 11.1.1.0/24
-      maximum-paths 16
+    hostname bgpd
+    password zebra
+    router bgp 7675
+      bgp router-id 10.0.0.1
+      network 10.0.0.0/8
+      neighbor 10.0.0.5 remote-as 0987
+      neighbor 10.0.0.2 ebgp-multihop
 
 **Sample pillar top file - /srv/pillar/top.sls**
 
