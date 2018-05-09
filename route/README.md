@@ -72,4 +72,4 @@ View all IPv6 routes in the device
 
 - https://manpages.debian.org/stretch/iproute2/ip-route.8.en.html
 
-Copyright (c) 2018, Dell EMC. All rights reserved.
+(c) 2018 Dell Inc. or its subsidiaries. All Rights Reserved.

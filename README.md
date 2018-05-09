@@ -76,4 +76,4 @@ Reference : https://docs.saltstack.com/en/latest/ref/configuration/index.html#ke
 - https://docs.saltstack.com/en/latest/ref/configuration/minion.html
 - https://docs.saltstack.com/en/latest/ref/states/all/
 
-Copyright (c) 2018, Dell EMC. All rights reserved.
+(c) 2018 Dell Inc. or its subsidiaries. All Rights Reserved.

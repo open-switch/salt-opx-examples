@@ -47,7 +47,6 @@ This module contains the configuration file ``/srv/salt/templates/bgpd.conf``, p
       bgp router-id 10.0.0.1
       network 10.0.0.0/8
       neighbor 10.0.0.5 remote-as 0987
-      neighbor 10.0.0.2 ebgp-multihop
 
 **Sample pillar top file - /srv/pillar/top.sls**
 
@@ -95,4 +94,4 @@ Run in all Salt minions.
 
 https://docs.saltstack.com/en/latest/topics/pillar/
 
-Copyright (c) 2018, Dell EMC. All rights reserved.
+(c) 2018 Dell Inc. or its subsidiaries. All Rights Reserved.
